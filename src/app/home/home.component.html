@@ -1,0 +1,19 @@
+
+<div class ="body">
+    <h2> ENROLLEE'S LIST</h2>
+ <div class ="block" *ngFor="let item of enrolleData; let index = index; trackBy:trackByIndex;">
+ <div class ="name items">Enrollee {{index +1}}</div>
+  <div class ="items">
+    <div class = "item-left"> ID: {{ item.id }}</div> 
+    <div class ="item-right" *ngIf = "item.dateOfBirth"> DateOfBirth: {{ item.dateOfBirth }}</div>   
+    </div>
+    <div class ="items">
+        <div class = "item-left">
+            <input  name=a{{index}} [(ngModel)]="enrolleData[index].name"><button (click)="change(enrolleData[index].name,enrolleData[index].id, enrolleData[index].active, index)">submit</button>
+        </div>
+
+        <button class ="status-active" *ngIf = "item.active == true" (click)="changeStatus(enrolleData[index].name,enrolleData[index].id, enrolleData[index].active, index)">Active</button> 
+        <button class ="status-inactive" *ngIf = "item.active == false" (click)="changeStatus(enrolleData[index].name,enrolleData[index].id, enrolleData[index].active, index)"> InActive</button>    
+    </div>
+ </div>
+</div>

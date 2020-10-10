@@ -1,0 +1,45 @@
+$bgcolor: #a9a9a975;
+$textcolor: black;
+$fontsize: 18px;
+
+.body {
+    padding-right :10%;
+    padding-left:10%;
+    width: auto
+}
+
+.name {
+  background-color: $bgcolor;
+  color: $textcolor;
+  font-size: $fontsize;
+  padding:20px
+}
+.block {
+   border-bottom: 2px solid;
+}
+.items {
+    padding-left: 20px;
+    display: inline-block;
+    width: 97%;
+}
+.item-left {
+    width: 50%;
+    float:left;
+}
+.item-right {
+    float:left;
+    margin-left: 20px;
+}
+.status-active {
+    float: left;
+    color: green; 
+    margin-left: 20px;
+}
+.status-inactive {
+    float: left;
+    color: red;
+    margin-left: 20px;
+}
+.button {
+    padding-left:20px
+}
