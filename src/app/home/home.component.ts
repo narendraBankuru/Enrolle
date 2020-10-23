@@ -8,7 +8,8 @@ import { Result, UpdateDb, Data } from './EnrolleInterface';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
- enrolleData: Result;
+ enrolleData: Result[];
+ config: any;
  updateObject: UpdateDb = {
    active : undefined,
    name : undefined
@@ -28,7 +29,10 @@ export class HomeComponent implements OnInit {
       (response) => {
         if (response){
           this.enrolleData = response;
-          console.log(this.enrolleData);
+          this.config = {
+            itemsPerPage: 5,
+            currentPage: 1,
+          };
         }
         else{
           console.log( "No enrolles Available")
@@ -67,6 +71,8 @@ changeStatus( name, Id, active, index ) {
       console.log( "Error in calling the service")
     }
   );
-
+}
+pageChanged(event){
+  this.config.currentPage = event;
 }
 }

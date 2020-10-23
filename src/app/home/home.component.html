@@ -1,7 +1,7 @@
 
 <div class ="body">
     <h2> ENROLLEE'S LIST</h2>
- <div class ="block" *ngFor="let item of enrolleData; let index = index; trackBy:trackByIndex;">
+ <div class ="block" *ngFor="let item of enrolleData | paginate: config ; let index = index; trackBy:trackByIndex;">
  <div class ="name items">Enrollee {{index +1}}</div>
   <div class ="items">
     <div class = "item-left"> ID: {{ item.id }}</div> 
@@ -9,6 +9,7 @@
     </div>
     <div class ="items">
         <div class = "item-left">
+            <span>Name: </span>
             <input  name=a{{index}} [(ngModel)]="enrolleData[index].name"><button (click)="change(enrolleData[index].name,enrolleData[index].id, enrolleData[index].active, index)">submit</button>
         </div>
 
@@ -16,4 +17,5 @@
         <button class ="status-inactive" *ngIf = "item.active == false" (click)="changeStatus(enrolleData[index].name,enrolleData[index].id, enrolleData[index].active, index)"> InActive</button>    
     </div>
  </div>
+ <pagination-controls class = "pagination" (pageChange)="pageChanged($event)"></pagination-controls>
 </div>

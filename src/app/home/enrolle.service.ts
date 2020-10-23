@@ -15,8 +15,8 @@ export class EnrolleService {
     private http: HttpClient,
   ) { }
 
-  getEnrolles(): Observable<Result> {
-      return this.http.get<Result>(this.url)
+  getEnrolles(): Observable<Result[]> {
+      return this.http.get<Result[]>(this.url)
       .pipe(catchError(err => throwError(err)));
   }
 
