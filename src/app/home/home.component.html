@@ -9,8 +9,10 @@
     </div>
     <div class ="items">
         <div class = "item-left">
+            <form>
             <span>Name: </span>
-            <input  name=a{{index}} [(ngModel)]="enrolleData[index].name"><button (click)="change(enrolleData[index].name,enrolleData[index].id, enrolleData[index].active, index)">submit</button>
+            <input type ="text" name=a{{index}} [(ngModel)]="enrolleData[index].name" required minlength="1"><button (click)="change(enrolleData[index].name,enrolleData[index].id, enrolleData[index].active, index)">submit</button>
+        </form>
         </div>
 
         <button class ="status-active" *ngIf = "item.active == true" (click)="changeStatus(enrolleData[index].name,enrolleData[index].id, enrolleData[index].active, index)">Active</button> 

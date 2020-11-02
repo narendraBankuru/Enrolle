@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EnrolleService } from './enrolle.service';
+
 import { Result, UpdateDb, Data } from './EnrolleInterface';
 
 @Component({
@@ -21,7 +22,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEnrolleResponse();
-    console.log(this.updateObject.active = true);
   }
 
   private getEnrolleResponse(): void {
@@ -35,11 +35,11 @@ export class HomeComponent implements OnInit {
           };
         }
         else{
-          console.log( "No enrolles Available")
+          alert("No enrolles Available");
         }
       },
       () => {
-        console.log( "Error in calling the service")
+        alert( "Error in calling the service")
       }
     );
   }
@@ -49,16 +49,23 @@ export class HomeComponent implements OnInit {
   }
 
   change( name, Id, active, index ){
+    if (name.length !== 0){
     this.updateObject.name = name;
     this.updateObject.active = active;
     this.enrolleService.UpdateNameOrStatus(Id, this.updateObject).subscribe(
       (data) => {
         this.enrolleData[index].name = name;
+        alert( "Name updated")
       },
       () => {
-        console.log( "Error in calling the service")
+        alert( "Error in calling the service")
       }
-    )};
+    );
+   }
+else{
+  alert( "Name cannot be empty")
+ }
+}
 
 changeStatus( name, Id, active, index ) {
   this.updateObject.name = name;
@@ -66,9 +73,10 @@ changeStatus( name, Id, active, index ) {
   this.enrolleService.UpdateNameOrStatus(Id, this.updateObject).subscribe(
     (data) => {
       this.enrolleData[index].active = !active;
+      alert( "Status updated")
     },
     () => {
-      console.log( "Error in calling the service")
+      alert( "Error in calling the service")
     }
   );
 }
